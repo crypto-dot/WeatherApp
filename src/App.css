@@ -24,9 +24,17 @@
     padding-left: 2.5rem;
     border-radius: .5rem;
 }
-.SearchBar {
-    position: relative;
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.searchBar {
     margin-bottom: clamp(150px, 50vh, 50vh);
+}
+.searchBarWrapper {
+    position: relative;
 }
 .square {
     position: absolute;
