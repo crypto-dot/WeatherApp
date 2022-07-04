@@ -1,12 +1,17 @@
-import React from 'react'
-import Information from './components/Information'
-import SearchBar from './components/SearchBar'
+import React from 'react';
+import Information from './components/Information';
+import SearchBar from './components/SearchBar';
+import Loading from './components/Loading';
+import './App.css';
 function App() {
   return (
-    <div>
+    <>
       <SearchBar/>
-      <Information/>
-    </div>
+      <div className='lowerHalf'>
+      <Loading/>
+      <Information/> 
+      </div>
+    </>
   )
 }
 

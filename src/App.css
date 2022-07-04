@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap');
+#root {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.lowerHalf {
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#search {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    border:none;
+    width: clamp(150px,35vw,700px);
+    outline: none;
+    height: 2.5rem;
+    padding-left: 2.5rem;
+    border-radius: .5rem;
+}
+.SearchBar {
+    position: relative;
+    margin-bottom: clamp(150px, 50vh, 50vh);
+}
+.square {
+    position: absolute;
+    top: .975rem;
+    left: .9375rem;
+    border-radius: .15rem;
+    width: .625rem;
+    height: .625rem;
+    background-color: black;
+}
+::placeholder, ::-moz-placeholder, ::-webkit-input-placeholder {
+    color: #C0C0C0;
+}
+#fahrenheit, #celsius {
+    border:none;
+    background-color: transparent;
+}
+#WeatherInformation, #Location, button{
+    color: white;
+    font-weight: 900; 
+}
+button {
+    padding: .75rem;
+    font-size: 2.25rem;
+}
+button.selected {
+    color: rgba(95,95,95,0.76);
+}
+button:not(.selected):hover {
+    cursor: pointer;
+    color: rgba(238, 238, 238, 0.76)
+}
+#WeatherInformation {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
