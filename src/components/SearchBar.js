@@ -1,6 +1,6 @@
 
-
-import React, { useState } from 'react';
+import './Loading.css';
+import React from 'react';
 import '../App.css';
 
 function retrieveWeather(e) {
@@ -8,14 +8,21 @@ function retrieveWeather(e) {
     if(!input.validity.valid) {
         e.preventDefault()
     } else {
+        document.getElementById('information').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
         const city = new FormData(e.target).get('search');
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?${city}&appid=dad1668d2a09e8fc09c452ba19dbb162`).then(
-            function(res) {
-                return res.json();
-            }
-        ).then(
-            function(res) {
-                console.log(res);
+        document.getElementById('location').textContent = `${city[0].toUpperCase()}${city.slice(1)}`;
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dad1668d2a09e8fc09c452ba19dbb162`)
+        .then(
+                (res) => res.json())
+        .then(
+        async function(res) {
+            const promise = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=O5Rq3DgUs9onISIeDz4S2Qwo0HmcLxXD&q=weather ${res.weather[0].main}&limit=1&offset=0&rating=g&lang=en`);
+            const data = await promise.json();
+            document.querySelector('#root').style.backgroundImage = `url(\"${data.data[0].images.original.url}\")`;
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('information').style.display = 'block';
+            document.getElementById('degrees').textContent = `${ ( ( (res.main.temp - 273.15) * (9/5) ) + 32).toFixed(1) }`;
             }
         )
     }
@@ -34,7 +41,7 @@ function SearchBar() {
     <header className = 'searchBar'>
         <form onSubmit = {retrieveWeather} noValidate action = 'javascript:void(0)'>
         <div className='searchBarWrapper'>
-            <input onInput= {checkInput} pattern='/\w+/' minLength = '3' maxLength='85' type='text' name= 'search' id = 'search' placeholder='Search'></input>
+            <input onInput= {checkInput} pattern='[A-z]+' minLength = '3' maxLength='85' type='text' name= 'search' id = 'search' placeholder='Search'></input>
             <div className='square'></div>
         </div>
         <span id='error'></span>

@@ -4,4 +4,6 @@
 body {
     position: relative;
     background-color: rgb(41, 41, 56);
+    background-size: cover;
+    background-repeat: no-repeat;
 }

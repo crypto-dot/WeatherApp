@@ -52,7 +52,7 @@ form {
     border:none;
     background-color: transparent;
 }
-#WeatherInformation, #Location, button{
+#weatherInformation, #location, button{
     color: white;
     font-weight: 900; 
 }
@@ -67,8 +67,14 @@ button:not(.selected):hover {
     cursor: pointer;
     color: rgba(238, 238, 238, 0.76)
 }
-#WeatherInformation {
-    justify-content: center;
-    display: flex;
-    align-items: center;
+#weatherInformation {
+    text-align: center;
 }
+#information {
+    text-align: center;
+    display: none;
+}
+#loading {
+    display: none;
+}
+  
