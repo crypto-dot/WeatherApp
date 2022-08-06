@@ -27,12 +27,16 @@ async function retrieveWeather(e) {
         } else {
             state = data.records[0].fields.ste_stusps_code;
         }
-    }
-    const countryCodeResponse = await fetch(`https://restcountries.com/v3.1/name/${country}`);
-    const data = await countryCodeResponse.json();
-    country = data[0].cca2;
-    if (country == null) {
-        alert("Unable to find country code");
+        country = "US";
+    } else {
+        const countryCodeResponse = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+        if (!countryCodeResponse.ok) {
+            alert("Unable to find country code");
+        }
+        else {
+            const data = await countryCodeResponse.json();
+            country = data[0].cca2;
+        }
     }
     let query;
     if (state == null || state === "") {
@@ -66,7 +70,6 @@ async function retrieveWeather(e) {
         });
 }
 function validateInput(e) {
-    console.log(e.key);
     if (!(new RegExp(/[A-z]/).test(e.key)) && e.key !== "Backspace" && e.key !== ' ') {
         e.preventDefault();
     }
