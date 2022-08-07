@@ -84,7 +84,7 @@ function SearchBar() {
                     <div className='square'></div>
                 </div>
                 <div className='searchBarWrapper'>
-                    <input onKeyDown={validateInput} maxLength='85' type='text' name='state' id='state' placeholder='Enter State (US ONLY)'></input>
+                    <input onKeyDown={validateInput} maxLength='85' type='text' name='state' id='state' placeholder='Enter State (US)'></input>
                     <div className='square'></div>
                 </div>
                 <div className='searchBarWrapper'>
